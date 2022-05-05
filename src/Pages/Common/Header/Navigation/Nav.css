@@ -1,0 +1,30 @@
+.menu-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0px;
+}
+
+.brand-logo h3 {
+  font-size: 28px;
+  color: #E8FFC2;
+}
+
+.menu-items {
+  display: flex;
+  align-items: center;
+}
+
+.menu-items div {
+  margin-right: 25px;
+}
+
+.menu-items div:last-child {
+  margin-right: 0;
+}
+
+.menu-items div a {
+  color: #00FFDD;
+  font-size: 16px;
+  font-weight: 500;
+}

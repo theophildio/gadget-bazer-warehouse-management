@@ -1,0 +1,44 @@
+.banner {
+  min-height: 600px;
+  position: relative;
+}
+
+.banner::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: '';
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.container {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.container .banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container .banner-content h2 {
+  text-transform: capitalize;
+  font-size: 50px;
+  font-weight: 500;
+  color: #00FFDD;
+}
+
+.container .banner-content h2 span {
+  color: #E8FFC2;
+}
+
+.container .banner-content p {
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 28px;
+}
