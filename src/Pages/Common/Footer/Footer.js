@@ -1,12 +1,19 @@
-import React from 'react';
-import './Footer.css';
+import React from "react";
+import "./Footer.css";
 
 const Footer = () => {
-  return (
-    <footer>
-      <h1>footer</h1>
-    </footer>
-  );
+	const getDate = new Date();
+	const getCurrentYear = getDate.getFullYear();
+	return (
+		<footer className="footer">
+			<div className="container">
+				<p>
+					&copy; Copyright - {getCurrentYear} | All rights reserved by Theophil
+					Dio
+				</p>
+			</div>
+		</footer>
+	);
 };
 
 export default Footer;
