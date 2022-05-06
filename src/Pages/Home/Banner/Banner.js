@@ -4,7 +4,7 @@ import BackgroundImg from "../../../images/gadgets-bg.jpg";
 
 const Banner = () => {
 	return (
-		<div
+		<section
 			className="banner"
 			style={{
 				backgroundImage: `url(${BackgroundImg})`,
@@ -23,7 +23,7 @@ const Banner = () => {
 					</p>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 
