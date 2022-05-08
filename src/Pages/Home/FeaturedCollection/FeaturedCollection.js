@@ -5,14 +5,15 @@ import SingleProduct from './SingleProduct/SingleProduct';
 
 const FeaturedCollection = () => {
   const [product] = useProduct();
+  const productOnHome = product.slice(0, 6);
   return (
     <section className='featured-collection'>
       <div className="container">
         <h3>Featured collection</h3>
         <div className="featured-collections">
           {
-            product.map(item => <SingleProduct
-              key={product._id}
+            productOnHome.map(item => <SingleProduct
+              key={productOnHome._id}
               item={item}
             ></SingleProduct>)
           }

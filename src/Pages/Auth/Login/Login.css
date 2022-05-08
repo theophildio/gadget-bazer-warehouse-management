@@ -1,0 +1,77 @@
+.login-container {
+  width: 85%;
+  min-height: 80vh;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.login-container h3 {
+  color: #0E185F;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-area {
+  width: 35%;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.login-area p {
+  margin: 10px 0 0 5px;
+}
+
+.divider {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divider hr {
+  width: 20%;
+  height: 1px;
+  background-color: #0E185F;
+  border: 0;
+}
+
+.divider span {
+  color: #0E185F;
+  font-size: 14px;
+}
+
+.social-logins {
+  text-align: center;
+}
+
+.social-logins .tutor-btn {
+  width: 80%;
+  cursor: pointer;
+}
+
+.social-icon {
+  color: #2FA4FF;
+  margin-right: 5px;
+}
+
+.signup {
+  text-decoration: none;
+  color: #2FA4FF;
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+}
+
+/* Responsive */
+@media only screen and (max-width: 480px) {
+  .login-area {
+    width: 100%;
+  }
+  .divider span {
+    font-size: 10px;
+  }
+}
