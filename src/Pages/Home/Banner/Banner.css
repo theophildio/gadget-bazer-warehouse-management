@@ -10,7 +10,7 @@
   width: 100%;
   height: 100%;
   content: '';
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .container {
@@ -30,7 +30,8 @@
   text-transform: capitalize;
   font-size: 50px;
   font-weight: 500;
-  color: #00FFDD;
+  color: #2FA4FF;
+  text-shadow: 1px 0px 3px #2f2f2f;
 }
 
 .container .banner-content h2 span {
