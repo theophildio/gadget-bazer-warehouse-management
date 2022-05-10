@@ -1,10 +1,46 @@
 import React from "react";
 import "./Login.css";
 import SocialLogin from "../SocialLogin/SocialLogin";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
 
 
 const Login = () => {
+	const [signInWithEmailAndPassword, user, loading, error] =
+		useSignInWithEmailAndPassword(auth);
+		const [sendPasswordResetEmail, sending, errorPass] = useSendPasswordResetEmail(
+			auth
+		);
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	let errormsg;
+
+	if (error) {
+    errormsg = <div>
+        <p style={{color: 'crimson', margitBottom: '10px'}}>Error: {error.message}</p>
+      </div>
+    
+  }
+
+	let from = location.state?.from?.pathname || "/";
+
+	if (user) {
+		navigate(from, { replace: true });
+	}
+
+	const handleLogin = (e) => {
+		e.preventDefault();
+		const email = e.target.email.value;
+		const password = e.target.password.value;
+		signInWithEmailAndPassword(email, password);
+	};
+
+	const navigateToRegister = () => {
+		navigate("/signup");
+	};
+
 	return (
 		<div className="login-container">
 			<h3>Login</h3>
@@ -12,7 +48,7 @@ const Login = () => {
         <div className="other-login">
 					<SocialLogin></SocialLogin>
 				</div>
-				<form className="auth-form">
+				<form onSubmit={handleLogin} className="auth-form">
 					<input
 						type="email"
 						name="email"
@@ -29,10 +65,12 @@ const Login = () => {
 					/>
 					<input className="gadget-btn" type="submit" value="Log in" />
 				</form>
+				{errormsg}
 				<p>
 					<small>
 						No account?{" "}
 						<Link
+							onClick={navigateToRegister}
 							to="/signup"
 							className="signup"
 						>
