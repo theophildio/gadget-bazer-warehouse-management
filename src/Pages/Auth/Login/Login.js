@@ -11,10 +11,10 @@ import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
-	const emailRef = useRef('')
-	const [signInWithEmailAndPassword, user, error] =
+	const emailRef = useRef('');
+	const [signInWithEmailAndPassword, user, loading, error] =
 		useSignInWithEmailAndPassword(auth);
-	const [sendPasswordResetEmail, sending] =
+	const [sendPasswordResetEmail, sending, errorPass] =
 		useSendPasswordResetEmail(auth);
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -50,14 +50,14 @@ const Login = () => {
 
 	const handleResetPass = async () => {
 		const email = emailRef.current.value;
-        if (!email) {
-            toast('Enter your email please');
-        } else {
-            await sendPasswordResetEmail(email)
-            toast('Password Reset link sent to email');
-        }
+		if (!email) {
+				toast('Enter your email.')
+		} else {
+				await sendPasswordResetEmail(email)
+				toast('Reset link sent to email')
+		}
 
-    }
+}
 
 	return (
 		<div className="login-container">

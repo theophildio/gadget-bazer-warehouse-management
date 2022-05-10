@@ -7,9 +7,9 @@ import auth from "../../../firebase.init";
 import "./SocialLogin.css";
 
 const SocialLogin = () => {
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth, {sendEmailVerification: true});
   const navigate = useNavigate();
-
+	
   let errorGoogleMsg;
 
   // Error msg for Google
