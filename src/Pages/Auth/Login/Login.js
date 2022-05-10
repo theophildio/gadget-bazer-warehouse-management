@@ -1,28 +1,35 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Login.css";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+	useSendPasswordResetEmail,
+	useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
-
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
-	const [signInWithEmailAndPassword, user, loading, error] =
+	const emailRef = useRef('')
+	const [signInWithEmailAndPassword, user, error] =
 		useSignInWithEmailAndPassword(auth);
-		const [sendPasswordResetEmail, sending, errorPass] = useSendPasswordResetEmail(
-			auth
-		);
+	const [sendPasswordResetEmail, sending] =
+		useSendPasswordResetEmail(auth);
 	const navigate = useNavigate();
 	const location = useLocation();
 
 	let errormsg;
 
 	if (error) {
-    errormsg = <div>
-        <p style={{color: 'crimson', margitBottom: '10px'}}>Error: {error.message}</p>
-      </div>
-    
-  }
+		errormsg = (
+			<div>
+				<p style={{ color: "crimson", margitBottom: "10px" }}>
+					Error: {error.message}
+				</p>
+			</div>
+		);
+	}
 
 	let from = location.state?.from?.pathname || "/";
 
@@ -41,15 +48,27 @@ const Login = () => {
 		navigate("/signup");
 	};
 
+	const handleResetPass = async () => {
+		const email = emailRef.current.value;
+        if (!email) {
+            toast('Enter your email please');
+        } else {
+            await sendPasswordResetEmail(email)
+            toast('Password Reset link sent to email');
+        }
+
+    }
+
 	return (
 		<div className="login-container">
 			<h3>Login</h3>
 			<div className="login-area">
-        <div className="other-login">
+				<div className="other-login">
 					<SocialLogin></SocialLogin>
 				</div>
 				<form onSubmit={handleLogin} className="auth-form">
 					<input
+						ref={emailRef}
 						type="email"
 						name="email"
 						id="email"
@@ -69,24 +88,22 @@ const Login = () => {
 				<p>
 					<small>
 						No account?{" "}
-						<Link
-							onClick={navigateToRegister}
-							to="/signup"
-							className="signup"
-						>
+						<Link onClick={navigateToRegister} to="/signup" className="signup">
 							Sign up
 						</Link>
 					</small>
 				</p>
-				{/* Reset Password */}
+				
 				<p>
 					<small>
 						Forget Password?{" "}
 						<button
+							onClick={handleResetPass}
 							className="signup"
 						>
 							Reset Password
 						</button>
+						<ToastContainer></ToastContainer>
 					</small>
 				</p>
 			</div>
