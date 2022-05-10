@@ -8,7 +8,7 @@ const SocialLogin = () => {
 	return (
 		<>
 			<div className="social-logins">
-				<button className="tutor-btn">
+				<button className="gadget-btn">
 					<FontAwesomeIcon
 						className="social-icon"
 						icon={faGoogle}

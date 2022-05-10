@@ -1,0 +1,9 @@
+.auth-form input:not([type="submit"]) {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  height: 40px;
+  padding-left: 15px;
+  border: 2px solid #0E185F;
+  border-radius: 5px;
+}

@@ -3,6 +3,7 @@ import "./Login.css";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { Link } from "react-router-dom";
 
+
 const Login = () => {
 	return (
 		<div className="login-container">
@@ -11,7 +12,7 @@ const Login = () => {
         <div className="other-login">
 					<SocialLogin></SocialLogin>
 				</div>
-				<form className="contact-form">
+				<form className="auth-form">
 					<input
 						type="email"
 						name="email"
@@ -26,7 +27,7 @@ const Login = () => {
 						placeholder="Your password"
 						required
 					/>
-					<input className="tutor-btn" type="submit" value="Log in" />
+					<input className="gadget-btn" type="submit" value="Log in" />
 				</form>
 				<p>
 					<small>
@@ -35,7 +36,7 @@ const Login = () => {
 							to="/signup"
 							className="signup"
 						>
-							Signup
+							Sign up
 						</Link>
 					</small>
 				</p>

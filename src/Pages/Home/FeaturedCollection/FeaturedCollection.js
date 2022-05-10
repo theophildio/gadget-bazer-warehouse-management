@@ -13,7 +13,7 @@ const FeaturedCollection = () => {
         <div className="featured-collections">
           {
             productOnHome.map(item => <SingleProduct
-              key={productOnHome._id}
+              key={item._id}
               item={item}
             ></SingleProduct>)
           }
