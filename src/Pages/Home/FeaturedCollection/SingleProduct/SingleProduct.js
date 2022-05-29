@@ -1,8 +1,8 @@
 import React from "react";
 import "./SingleProduct.css";
 
-const SingleProduct = ({ item }) => {
-	const { image, name, details, price, Vendor, Quantity } = item;
+const SingleProduct = ({ item, handleUpdateStock }) => {
+	const { _id, image, name, details, price, Vendor, Quantity } = item;
 	return (
 		<div className="single-product">
 			<div className="img">
@@ -15,7 +15,7 @@ const SingleProduct = ({ item }) => {
         <p>{details}</p>
         <h5>${price}</h5>
       </div>
-			<button className="gadget-btn">Update</button>
+			<button onClick={() => handleUpdateStock(_id)} className="gadget-btn">Update</button>
 		</div>
 	);
 };
