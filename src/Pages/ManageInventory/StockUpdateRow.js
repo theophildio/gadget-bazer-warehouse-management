@@ -38,7 +38,11 @@ const StockUpdateRow = ({item, refetch}) => {
         <td>{price}</td>
         <td>{Vendor}</td>
         <td>
-          <button onClick={handleDeliverd} className="btn btn-xs bg-green-500 border-0">Delivery</button>
+          {
+            Quantity ? <button onClick={handleDeliverd} className="btn btn-xs bg-green-500 border-0">Delivery</button> 
+            :
+            <button className="btn btn-xs bg-red-500 border-0">Sold</button>
+            }
         </td>
       </tr>
     </>

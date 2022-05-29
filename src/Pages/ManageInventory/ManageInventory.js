@@ -45,7 +45,7 @@ const ManageInventory = () => {
                 }
               </tbody>
             </table>
-          </div>  
+          </div> 
       </div>
     </div>
   );
