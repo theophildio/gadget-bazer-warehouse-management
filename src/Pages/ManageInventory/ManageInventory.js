@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useProduct from '../../hooks/useProduct';
 import InventoryRow from './InventoryRow';
 import './ManageInventory.css';
@@ -11,8 +13,14 @@ const ManageInventory = () => {
   const handleUpdateStock = id => {
     navigate(`/stockupdate/${id}`);
   }
-  const handleDeleteBtn = id => {
-    console.log(id);
+  const handleDeleteBtn = async (id) => {
+    const confirm = window.confirm('Are You Sure to Delete the Item?')
+    if (confirm) {
+      const { data } = await axios.delete(`http://localhost:5000/product/${id}`)
+        if (data.acknowledged) {
+          toast.success('Successfully Deleted')
+      }
+    }
   } 
 
   return (
@@ -26,9 +34,9 @@ const ManageInventory = () => {
                   <th></th>
                   <th>Image</th>
                   <th>Product Name</th>
-                  <th>Quantity</th>
                   <th>Price</th>
                   <th>Vendor</th>
+                  <th>Quantity</th>
                   <th>Update Item</th>
                   <th>Delete Item</th>
                 </tr>

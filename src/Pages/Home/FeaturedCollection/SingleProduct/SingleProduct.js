@@ -11,7 +11,9 @@ const SingleProduct = ({ item, handleUpdateStock }) => {
       <div className="item-detail">
         <h4 className="product-title">{name}</h4>
 				<h4>Vendor: {Vendor}</h4>
-				<h5>Quantity: {Quantity}</h5>
+				{
+					Quantity ? <h5>Quantity: {Quantity}</h5> : <h5>Quantity: <span className="text-red-500">Out of Stock</span></h5>
+				}
         <p>{details}</p>
         <h5>${price}</h5>
       </div>
