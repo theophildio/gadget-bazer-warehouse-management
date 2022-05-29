@@ -21,6 +21,22 @@ const Nav = () => {
 				<CustomLink to="/">Home</CustomLink>
 				<CustomLink to="/inventory">Manage Inventory</CustomLink>
 				{
+					user && 
+					<CustomLink to="/myitems">My Items</CustomLink>
+				}
+				{
+					user && 
+					<CustomLink to="/additems">Add Item</CustomLink>
+				}
+				{
+					user && 
+					<CustomLink to="/stockupdate">Manage Item</CustomLink>
+				}
+				{
+					user && 
+					<span className="text-md font-semibold mr-5 text-white">{user?.displayName}</span>
+				}
+				{
             user ?
             <button onClick={handelLogOut} style={{border: '0', backgroundColor: 'red', color: '#fff', padding: '6px 15px', borderRadius: '8px', cursor: 'pointer'}}>Log out</button>
             :
