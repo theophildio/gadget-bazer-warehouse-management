@@ -5,12 +5,12 @@ import { toast } from 'react-toastify';
 
 const StockUpdateRow = ({item, refetch}) => {
   const { id } = useParams();
-  const {image, name, price, Vendor, Quantity} = item;
+  const {image, name, price, vendor, quantity} = item;
 
   const handleDeliverd = async (e) => {
-    if (!Quantity <= 0) {
-        const deliverdProduct = Quantity - 1;
-        const updateStock = { Quantity: deliverdProduct }
+    if (!quantity <= 0) {
+        const deliverdProduct = quantity - 1;
+        const updateStock = { quantity: deliverdProduct }
         const { data } = await axios.put(`http://localhost:5000/product/${id}`, updateStock)
         if (data.modifiedCount) {
           toast.success('Successfully Deliverd Product');
@@ -34,12 +34,12 @@ const StockUpdateRow = ({item, refetch}) => {
           </div>
         </td>
         <td>{name}</td>
-        <td>{Quantity}</td>
+        <td>{quantity}</td>
         <td>{price}</td>
-        <td>{Vendor}</td>
+        <td>{vendor}</td>
         <td>
           {
-            Quantity ? <button onClick={handleDeliverd} className="btn btn-xs bg-green-500 border-0">Delivery</button> 
+            quantity ? <button onClick={handleDeliverd} className="btn btn-xs bg-green-500 border-0">Delivery</button> 
             :
             <button className="btn btn-xs bg-red-500 border-0">Sold</button>
             }

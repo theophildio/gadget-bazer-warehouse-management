@@ -22,10 +22,13 @@ const StockUpdate = () => {
     e.preventDefault();
     const inputStock = e.target.quantity.value;
     const setStock = parseInt(inputStock)
-    if(setStock > 0) {
-      const getQnty = item.Quantity;
+    if(inputStock === "") {
+      return toast.error('Input valid stock value');
+    }
+    else if(setStock > 0) {
+      const getQnty = item.quantity;
       const totalStock = getQnty + setStock;
-      const stockQnty = {Quantity: totalStock}
+      const stockQnty = {quantity: totalStock}
       const { data } = await axios.put(`http://localhost:5000/product/${id}`, stockQnty)
         if (data.modifiedCount) {
           e.target.reset()
@@ -37,7 +40,9 @@ const StockUpdate = () => {
 
   return (
     <div className='px-4 lg:px-28 py-8'>
-      <h2 className='text-xl font-semibold mb-5'>Update stock of: {item.name} </h2>
+      <div>
+        <h2 className='text-xl font-semibold mb-5'>Update stock of: {item.name} </h2>
+      </div>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
@@ -59,7 +64,7 @@ const StockUpdate = () => {
       <div className='pt-12 w-1/3 mx-auto'>
         <form onSubmit={handleStockUpdate} className='flex flex-col'>
           <input type="text" name='quantity'  placeholder="Enter Quantity" className="input input-bordered w-full" />
-          <input type="submit" value="Update Stock" className="btn bg-cyan-400 w-full mt-6" />
+          <input type="submit" value="Update Stock" className="btn border-0 bg-cyan-400 w-full mt-6" />
         </form>
       </div>  
     </div>

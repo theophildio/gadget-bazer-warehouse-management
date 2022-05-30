@@ -26,11 +26,11 @@ const Nav = () => {
 				}
 				{
 					user && 
-					<CustomLink to="/additems">Add Item</CustomLink>
+					<CustomLink to="/additem">Add Item</CustomLink>
 				}
 				{
 					user && 
-					<CustomLink to="/stockupdate">Manage Item</CustomLink>
+					<CustomLink to="/inventory">Manage Item</CustomLink>
 				}
 				{
 					user && 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const InventoryRow = ({item, index, handleUpdateStock, handleDeleteBtn}) => {
-  const {_id, image, name, price, Vendor, Quantity, } = item;
+  const {_id, image, name, price, vendor, quantity, } = item;
   
   return (
     <>
@@ -16,8 +16,8 @@ const InventoryRow = ({item, index, handleUpdateStock, handleDeleteBtn}) => {
         </td>
         <td>{name}</td>
         <td>{price}</td>
-        <td>{Vendor}</td>
-        <td>{Quantity}</td>
+        <td>{vendor}</td>
+        <td>{quantity}</td>
         <td>
           <button onClick={() => handleUpdateStock(_id)} className="btn btn-xs bg-green-500 border-0">Update</button>
         </td>

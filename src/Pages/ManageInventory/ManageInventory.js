@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useProduct from '../../hooks/useProduct';
 import InventoryRow from './InventoryRow';
@@ -26,34 +26,39 @@ const ManageInventory = () => {
   return (
     <div className='manage-inventory'>
       <div className="container">
-        <h2 className="text-2xl font-semibold mb-3">Manage Inventory</h2>
-          <div className="overflow-x-auto">
-            <table className="table w-full">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Image</th>
-                  <th>Product Name</th>
-                  <th>Price</th>
-                  <th>Vendor</th>
-                  <th>Quantity</th>
-                  <th>Update Item</th>
-                  <th>Delete Item</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  product.map((item, index) => <InventoryRow
-                    key= {item._id}
-                    item= {item}
-                    index={index}
-                    handleUpdateStock={handleUpdateStock}
-                    handleDeleteBtn={handleDeleteBtn}
-                  ></InventoryRow>)
-                }
-              </tbody>
-            </table>
-          </div> 
+        <div className='flex lg:flex-row justify-between'>
+          <h2 className="text-2xl font-semibold mb-3">Manage Inventory</h2>
+          <Link to="/additem">
+            <button className="btn btn-sm bg-cyan-500 border-0">Add New Item</button>
+          </Link>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="table w-full">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Vendor</th>
+                <th>Quantity</th>
+                <th>Update Item</th>
+                <th>Delete Item</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                product.map((item, index) => <InventoryRow
+                  key= {item._id}
+                  item= {item}
+                  index={index}
+                  handleUpdateStock={handleUpdateStock}
+                  handleDeleteBtn={handleDeleteBtn}
+                ></InventoryRow>)
+              }
+            </tbody>
+          </table>
+        </div> 
       </div>
     </div>
   );

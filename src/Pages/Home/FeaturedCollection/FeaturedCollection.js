@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useProduct from '../../../hooks/useProduct';
 import './FeaturedCollection.css';
 import SingleProduct from './SingleProduct/SingleProduct';
@@ -25,6 +25,11 @@ const FeaturedCollection = () => {
               handleUpdateStock={handleUpdateStock}
             ></SingleProduct>)
           }
+        </div>
+        <div className='mt-6 mx-auto w-1/5'>
+          <Link to="/inventory">
+            <button className="btn btn-wide bg-cyan-500 border-0">Manage Inventories</button>
+          </Link>
         </div>
       </div>
     </section>
