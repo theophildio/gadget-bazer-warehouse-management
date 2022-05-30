@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import MyItemRow from './MyItemRow';
@@ -33,8 +34,13 @@ const MyItems = () => {
   }  
     
   return (
-    <div className='container py-8'>
-      <h2 className='text-2xl font-semibold mb-1.5'>My Items</h2>
+    <div className='container py-8 min-h-screen'>
+      <div className='flex lg:flex-row justify-between'>
+        <h2 className="text-2xl font-semibold mb-3">My Items</h2>
+        <Link to="/additem">
+          <button className="btn btn-sm bg-cyan-500 border-0">Add New Item</button>
+        </Link>
+      </div>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>

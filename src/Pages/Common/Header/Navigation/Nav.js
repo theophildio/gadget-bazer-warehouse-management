@@ -30,10 +30,6 @@ const Nav = () => {
 				}
 				{
 					user && 
-					<CustomLink to="/inventory">Manage Item</CustomLink>
-				}
-				{
-					user && 
 					<span className="text-md font-semibold mr-5 text-white">{user?.displayName}</span>
 				}
 				{

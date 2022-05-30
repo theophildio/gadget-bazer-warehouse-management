@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useProduct from '../../hooks/useProduct';
@@ -7,8 +7,16 @@ import InventoryRow from './InventoryRow';
 import './ManageInventory.css';
 
 const ManageInventory = () => {
-  const [product] = useProduct();
+  const [products, setProducts] = useProduct();
+  const [isRefresh, setIsRefresh] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/product')
+        .then((response) => {
+          setProducts(response.data)
+        });
+}, [isRefresh])
 
   const handleUpdateStock = id => {
     navigate(`/stockupdate/${id}`);
@@ -18,6 +26,7 @@ const ManageInventory = () => {
     if (confirm) {
       const { data } = await axios.delete(`http://localhost:5000/product/${id}`)
         if (data.acknowledged) {
+          setIsRefresh(!isRefresh);
           toast.success('Successfully Deleted')
       }
     }
@@ -48,7 +57,7 @@ const ManageInventory = () => {
             </thead>
             <tbody>
               {
-                product.map((item, index) => <InventoryRow
+                products.map((item, index) => <InventoryRow
                   key= {item._id}
                   item= {item}
                   index={index}
