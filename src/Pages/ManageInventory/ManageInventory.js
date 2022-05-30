@@ -12,7 +12,7 @@ const ManageInventory = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/product')
+    axios.get('https://gadget-bazer.herokuapp.com/product')
         .then((response) => {
           setProducts(response.data)
         });
@@ -24,7 +24,7 @@ const ManageInventory = () => {
   const handleDeleteBtn = async (id) => {
     const confirm = window.confirm('Are You Sure to Delete the Item?')
     if (confirm) {
-      const { data } = await axios.delete(`http://localhost:5000/product/${id}`)
+      const { data } = await axios.delete(`https://gadget-bazer.herokuapp.com/product/${id}`)
         if (data.acknowledged) {
           setIsRefresh(!isRefresh);
           toast.success('Successfully Deleted')

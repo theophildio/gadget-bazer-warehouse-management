@@ -12,7 +12,7 @@ const MyItems = () => {
   const [isRefresh, setIsRefresh] = useState(false)
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/myitems/${user?.email}`, {
+    axios.get(`https://gadget-bazer.herokuapp.com/myitems/${user?.email}`, {
       headers: {
         'content-type': 'application/json'
       }
@@ -25,7 +25,7 @@ const MyItems = () => {
   const handleDeleteBtn = async (id) => {
     const confirm = window.confirm('Are You Sure to Delete the Item?')
     if (confirm) {
-      const { data } = await axios.delete(`http://localhost:5000/myitem/${id}`)
+      const { data } = await axios.delete(`https://gadget-bazer.herokuapp.com/myitem/${id}`)
         if (data.acknowledged) {
           setIsRefresh(!isRefresh);
           toast.success('Successfully Deleted');

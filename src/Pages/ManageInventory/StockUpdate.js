@@ -8,7 +8,7 @@ import StockUpdateRow from './StockUpdateRow';
 
 const StockUpdate = () => {
   const {id} = useParams();
-  const {data: item, isLoading, refetch} = useQuery('item', () => fetch(`http://localhost:5000/product/${id}`, {
+  const {data: item, isLoading, refetch} = useQuery('item', () => fetch(`https://gadget-bazer.herokuapp.com/product/${id}`, {
     headers: {
       'content-type': 'application/json'
     }
@@ -29,7 +29,7 @@ const StockUpdate = () => {
       const getQnty = item.quantity;
       const totalStock = getQnty + setStock;
       const stockQnty = {quantity: totalStock}
-      const { data } = await axios.put(`http://localhost:5000/product/${id}`, stockQnty)
+      const { data } = await axios.put(`https://gadget-bazer.herokuapp.com/product/${id}`, stockQnty)
         if (data.modifiedCount) {
           e.target.reset()
           toast.success('Successfully Added Stock');

@@ -31,7 +31,7 @@ const AddItem = () => {
 			image,
 		};
     // Send to Database
-    fetch('http://localhost:5000/product/additem', {
+    fetch('https://gadget-bazer.herokuapp.com/product/additem', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

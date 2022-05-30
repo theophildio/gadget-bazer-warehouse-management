@@ -11,7 +11,7 @@ const StockUpdateRow = ({item, refetch}) => {
     if (!quantity <= 0) {
         const deliverdProduct = quantity - 1;
         const updateStock = { quantity: deliverdProduct }
-        const { data } = await axios.put(`http://localhost:5000/product/${id}`, updateStock)
+        const { data } = await axios.put(`https://gadget-bazer.herokuapp.com/product/${id}`, updateStock)
         if (data.modifiedCount) {
           toast.success('Successfully Deliverd Product');
           refetch();

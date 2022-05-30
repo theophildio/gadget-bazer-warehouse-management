@@ -17,7 +17,7 @@ const FeaturedCollection = () => {
     <section className='featured-collection'>
       <div className="container">
         <h3>Featured collection</h3>
-        <div className="featured-collections">
+        <div className="featured-collections grid lg:grid-cols-3 gap-10">
           {
             productOnHome.map(item => <SingleProduct
               key={item._id}
@@ -26,7 +26,7 @@ const FeaturedCollection = () => {
             ></SingleProduct>)
           }
         </div>
-        <div className='mt-6 mx-auto w-1/5'>
+        <div className='mt-6 w-4/5 mx-auto lg:w-1/5'>
           <Link to="/inventory">
             <button className="btn btn-wide bg-cyan-500 border-0">Manage Inventories</button>
           </Link>
