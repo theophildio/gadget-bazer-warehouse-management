@@ -4,7 +4,7 @@ Please visit the Live website [Gadget Bazer Warehouse Management](https://wareho
 
 ## Features of the Cordless Tools Terminal web application
 
-* Gadget Bazer is a MERN Stack Manufacturer Company web application.
+* Gadget Bazer is a MERN Stack Warehouse Inventory Management web application.
 * Key features of this application are: 
 * Email/Password firebase authenticatin with extra Google login and register. 
 * Application has the protected route by which no one can manage inventories, add product, delivery items without register/login.  
